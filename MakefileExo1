@@ -1,0 +1,25 @@
+# Nom de l'exécutable final
+TARGET = progExo1
+
+# Fichiers sources
+SRC = mainExo1.c exo1.c
+OBJ = $(SRC:.c=.o)  # Remplace .c par .o dans le même chemin
+
+# Compilateur et options
+CC = gcc
+CFLAGS = -Wall -Wextra -g
+
+# Règle par défaut
+all: $(TARGET)
+
+# Compilation de l'exécutable
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+
+# Compilation des fichiers objets et stockage dans H/
+%.o: %.c exo1.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Nettoyage des fichiers objets et de l'exécutable
+clean:
+	rm -f $(OBJ) $(TARGET)

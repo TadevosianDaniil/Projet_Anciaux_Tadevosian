@@ -20,7 +20,7 @@ HashEntry * hashentry_create(const char *key, void *value){
 
 HashMap *hashmap_create(){
     HashMap *hm = (HashMap *)malloc(sizeof(HashMap));
-    hm->size = TAILLE;  
+    hm->size = TAILLE;
     hm->table = (HashEntry *)malloc(TAILLE * sizeof(HashMap));
 
     for (int i = 0; i < TAILLE; i++){
@@ -68,7 +68,6 @@ void hashmap_destroy(HashMap *map){
     free(map->table);
     free(map);
 }
-
 
 
 

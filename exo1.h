@@ -19,6 +19,7 @@ typedef struct hashmap {
     HashEntry* table;
 } HashMap;
 
+
 /*1.1*/ unsigned long simple_hash(const char *str);
 
 /*1.2*/HashMap *hashmap_create();
