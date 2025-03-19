@@ -8,5 +8,5 @@ Utilisation de git
 4) On execute git commit -m "message qu'on veut ajouter"
 5) On execute git push -u origin main 
 
-N.B.: N'oublions pas d'executer git pull avant de faire des modifications pour
-        avoir la version du projet le plus recent
+N.B.: N'oublions pas d'executer git pull origin main avant de faire 
+        des modifications pour avoir la version du projet le plus recent
