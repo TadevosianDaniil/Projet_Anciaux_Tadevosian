@@ -1,10 +1,12 @@
 # Nom de l'exécutable final
-TARGET = progExo1
+TARGET = progExo2
 
-# Fichiers sources
-NUM = 1
+# Numéros des exercices
+NUMS = 1 2
+
+# Génération des fichiers sources
 SRC = $(foreach N, $(NUMS), mainExo$(N).c exo$(N).c)
-OBJ = $(patsubst %.c, %.o, $(SRC))  # Remplace .c par .o dans le même chemin
+OBJ = $(patsubst %.c, %.o, $(SRC))  # Convertit les fichiers .c en .o
 
 # Compilateur et options
 CC = gcc
@@ -17,8 +19,8 @@ all: $(TARGET)
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
 
-# Compilation des fichiers objets et stockage dans H/
-%.o: %.c exo$(NUM).h
+# Compilation des fichiers objets
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Nettoyage des fichiers objets et de l'exécutable

@@ -1,4 +1,4 @@
-#include "ex1.h"
+#include "exo1.h"
 
 int main(){
 
