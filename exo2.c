@@ -21,11 +21,12 @@ Segment* find_free_segment(MemoryHandler* handler, int start, int size, Segment*
     prev = NULL;
     Segment *tmp = handler->free_list;
     while(tmp){
-        if(tmp->start <= start && tmp->end >= start+size){
+        if(tmp->start <= start && tmp->size >= start+size){
             return tmp;
         }
         (*prev) = tmp;
-        tmp = tmp->suivant;
+        tmp = tmp->next;
     }
     return NULL;
 }
+
