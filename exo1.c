@@ -1,4 +1,4 @@
-#include "ex1.h"
+#include "exo1.h"
 
 // Exo 1.1
 unsigned long simple_hash(const char *str){
@@ -52,6 +52,10 @@ int hashmap_insert(HashMap *map, const char *key, void *value){
 // Exo 1.4
 void * hashmap_get(HashMap *map, const char *key){
     unsigned long indice = simple_hash(key);
+
+    if (map->table[indice].value == TOMBSTONE){
+        return NULL;
+    }
     return map->table[indice].value;
 }
 

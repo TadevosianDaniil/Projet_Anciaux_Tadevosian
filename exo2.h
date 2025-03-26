@@ -17,6 +17,13 @@ typedef struct memoryHandler {
     HashMap *allocated;
 } MemoryHandler;
 
+// Exo 2.1
+MemoryHandler *memory_init(int size);
 
+// Exo 2.2
+Segment* find_free_segment(MemoryHandler* handler, int start, int size, Segment** prev);
+
+// Exo 2.4
+int remove_segment(MemoryHandler *handler, const char *name);
 
 #endif
