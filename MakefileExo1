@@ -3,7 +3,7 @@ TARGET = progExo1
 
 # Fichiers sources
 NUM = 1
-SRC = $(foreach N, $(NUMS), mainExo$(N).c exo$(N).c)
+SRC = $(foreach N, $(NUM), mainExo$(N).c exo$(N).c)
 OBJ = $(patsubst %.c, %.o, $(SRC))  # Remplace .c par .o dans le même chemin
 
 # Compilateur et options

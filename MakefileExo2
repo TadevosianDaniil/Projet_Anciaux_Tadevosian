@@ -5,7 +5,7 @@ TARGET = progExo2
 NUMS = 1 2
 
 # Génération des fichiers sources
-SRC = $(foreach N, $(NUMS), mainExo$(N).c exo$(N).c)
+SRC = $(foreach N, $(NUM), mainExo$(N).c exo$(N).c)
 OBJ = $(patsubst %.c, %.o, $(SRC))  # Convertit les fichiers .c en .o
 
 # Compilateur et options

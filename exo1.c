@@ -20,7 +20,7 @@ HashEntry * hashentry_create(const char *key, void *value){
 
 HashMap *hashmap_create(){
     HashMap *hm = (HashMap *)malloc(sizeof(HashMap));
-    hm->size = TAILLE;
+    hm->size = 0;
     hm->table = (HashEntry *)malloc(TAILLE * sizeof(HashMap));
 
     for (int i = 0; i < TAILLE; i++){
@@ -36,12 +36,17 @@ int hashmap_insert(HashMap *map, const char *key, void *value){
     if (map->table[indice].value == TOMBSTONE){
         map->table[indice].key = (char *)key;
         map->table[indice].value = value;
+        map->size++;
         return indice;
     } else {
-        for(int i = indice+1; i != indice; i++){
+        for(int i = indice + 1; i != indice; i++){
+            if (i == 128){
+                i = 0;
+            }
             if (map->table[i].value == TOMBSTONE){
                 map->table[i].key = (char *)key;
                 map->table[i].value = value;
+                map->size++;
                 return i;
             }
         }
@@ -64,6 +69,7 @@ int hashmap_remove(HashMap *map, const char *key){
     unsigned long indice = simple_hash(key);
     map->table[indice].key = (char *)key;
     map->table[indice].value = TOMBSTONE;
+    map->size--;
     return indice;
 }
 

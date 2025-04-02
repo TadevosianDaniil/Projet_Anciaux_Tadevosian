@@ -1,26 +1,35 @@
 # Nom de l'exécutable final
 TARGET = progExo3
 
-# Fichiers sources
-NUM = 1 2 3
-SRC = $(foreach N, $(NUMS), mainExo$(N).c exo$(N).c)
-OBJ = $(patsubst %.c, %.o, $(SRC))  # Remplace .c par .o dans le même chemin
+# Fichiers sources (corrected)
+SRC = mainExo3.c exo3.c exo2.c exo1.c # Explicitly list files for Exo3
+OBJ = $(SRC:.c=.o)  # Simpler conversion from .c to .o
 
 # Compilateur et options
 CC = gcc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -g
 
 # Règle par défaut
 all: $(TARGET)
 
 # Compilation de l'exécutable
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^  # Using automatic variables
 
-# Compilation des fichiers objets et stockage dans H/
-%.o: %.c exo$(NUM).h
+# Règle générique pour les fichiers objets
+%.o: %.c exo3.h  # Specific header for Exo3
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Nettoyage des fichiers objets et de l'exécutable
+# Règle générique pour les fichiers objets
+%.o: %.c exo2.h  # Specific header for Exo3
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Règle générique pour les fichiers objets
+%.o: %.c exo1.h  # Specific header for Exo3
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Nettoyage
 clean:
-	rm -rf $(OBJ) $(TARGET)
+	rm -f $(OBJ) $(TARGET)
+
+.PHONY: all clean
