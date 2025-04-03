@@ -14,7 +14,7 @@ Instruction *parse_data_instruction(const char *line, HashMap *memory_locations)
 
 
     hashmap_insert(memory_locations, mnemonic, (void *)&(memory_locations->size));
-    memory_locations->size += count + 1;
+    memory_locations->size += count;
 
     Instruction *pi = (Instruction *)malloc(sizeof(Instruction)); 
     pi->mnemonic = strdup(mnemonic);
